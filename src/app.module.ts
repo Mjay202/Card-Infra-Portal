@@ -7,6 +7,8 @@ import { ProfileModule } from './profile/profile.module';
 import { FeeModule } from './fee/fee.module';
 import { SchemeModule } from './scheme/scheme.module';
 import { BranchModule } from './branch/branch.module';
+import { RequestModule } from './request/request.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @Module({
   imports: [
@@ -21,6 +23,8 @@ import { BranchModule } from './branch/branch.module';
     FeeModule,
     SchemeModule,
     BranchModule,
+    RequestModule,
+    DashboardModule,
   ],
   controllers: [AppController],
   providers: [AppService],

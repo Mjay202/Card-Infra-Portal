@@ -12,6 +12,6 @@ export class Scheme {
   @Column({ type: Number })
   pan_length: number;
 
-  @OneToMany(() => Profile, (profile) => profile.scheme, { cascade: true })
+  @OneToMany(() => Profile, (profile) => profile.scheme, { cascade: false })
   profiles: Profile[];
 }

@@ -1,6 +1,7 @@
+import { Branch } from "src/branch/branch.entity";
 import { Fee } from "src/common/types";
 import { Scheme } from "src/scheme/scheme.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 
 @Entity()
@@ -11,11 +12,6 @@ export class Profile {
   @Column({ nullable: false, type: String })
   card_name: string;
 
-    @ManyToOne(() => Scheme, (scheme) => scheme.profiles, {
-        onDelete: 'CASCADE',
-    })
-    scheme: Scheme;
-    
   @Column({ nullable: false, type: Number })
   bin_prefix: number;
 
@@ -30,4 +26,16 @@ export class Profile {
 
   @Column({ type: 'jsonb', default: [] })
   fees: Fee[];
+
+  @ManyToOne(() => Scheme, (scheme) => scheme.profiles, {
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn({ name: 'scheme_id' })
+  scheme: Scheme;
+
+  @ManyToOne(() => Branch, (branch) => branch.profiles, {
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn({ name: 'branch_id' })
+  branch: Branch;
 }

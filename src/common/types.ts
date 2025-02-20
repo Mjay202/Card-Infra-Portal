@@ -30,3 +30,10 @@ export type Fee = {
     fee_impact: FeeImpact,
     account: number
 }
+
+export enum CardRequestStatus {
+    PENDING = 'Pending',
+    IN_PROGRESS = 'In Progress',
+    READY = 'Ready',
+    ACKNOWLEDGED = 'Acknowledged'
+}
