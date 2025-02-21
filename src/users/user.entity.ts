@@ -18,9 +18,6 @@ export class User {
   @Column({ unique: true })
   username: string;
 
-  @Column({ unique: true })
-  slug: string;
-
   @Column()
   password: string;
 
