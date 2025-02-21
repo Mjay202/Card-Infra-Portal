@@ -30,4 +30,10 @@ export class ProfileService {
         return await this.profileRepo.save(newProfile);
 
     }
+
+    async findAll() {
+        return await this.profileRepo.find()
+    }
+
+    
 }

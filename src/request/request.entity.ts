@@ -6,28 +6,28 @@ export class Request {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ nullable: false, type: 'string' })
+  @Column({ nullable: false, type: String })
   branch_name: string;
 
-  @Column({ nullable: false, type: 'string' })
+  @Column({ nullable: false, type: String })
   initiator: string;
 
-  @Column({ nullable: false, type: 'string' })
+  @Column({ nullable: false, type: String })
   card_type: string;
 
-  @Column({ nullable: false, type: 'number' })
+  @Column({ nullable: false, type: Number })
   card_charges: number;
 
-  @Column({ nullable: false, type: 'number' })
+  @Column({ nullable: false, type: Number })
   quantity: number;
 
-  @Column({ nullable: false, type: 'number' })
+  @Column({ nullable: false, type: Number })
   batch: number;
 
-  @Column({ nullable: false, type: 'enum' })
-currency: CurrencyType;
+  @Column({ nullable: false, type: 'enum', enum:CurrencyType, default: 'NGN' })
+  currency: CurrencyType;
     
-  @Column({ nullable: false, type: 'enum' })
+  @Column({ nullable: false, type: 'enum', enum: CardRequestStatus })
   status: CardRequestStatus;
 
   @CreateDateColumn({ type: 'timestamp', nullable: true })
