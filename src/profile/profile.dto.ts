@@ -1,6 +1,6 @@
 import { Type } from "class-transformer";
-import { IsArray, IsNotEmpty, IsNumber, IsOptional, IsString, Length, ValidateNested } from "class-validator";
-import { Fee } from "src/common/types";
+import { IsArray, IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString, Length, ValidateNested } from "class-validator";
+import { CurrencyType, Fee } from "src/common/types";
 
 export class FeeDto {
   @IsNotEmpty()
@@ -50,14 +50,13 @@ export class CreateProfileDto {
   @IsString()
   description: string;
 
-  @IsNotEmpty()
-  @IsString()
-  @Length(3, 3)
-  currency: string;
+  @IsOptional()
+  @IsEnum(CurrencyType)
+  currency: CurrencyType;
 
   @IsArray()
-  @ValidateNested({ each: true }) 
-  @Type(() => FeeDto) 
+  @ValidateNested({ each: true })
+  @Type(() => FeeDto)
   fees: Fee[];
 
   @IsNotEmpty()
@@ -66,7 +65,7 @@ export class CreateProfileDto {
 
   @IsNotEmpty()
   @IsString()
-    branch_id: string;
+  branch_id: string;
 }
 
 export class UpdateProfileDto {

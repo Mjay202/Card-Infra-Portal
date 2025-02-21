@@ -30,9 +30,6 @@ export class CreateRequestDto {
   @IsString()
   currency: CurrencyType;
 
-@IsNotEmpty()
- @IsEnum(CardRequestStatus)
-  status: CardRequestStatus;
 }
 
 export class UpdateRequestDto {
@@ -64,7 +61,4 @@ export class UpdateRequestDto {
   @IsString()
   currency?: CurrencyType;
 
-  @IsOptional()
-  @IsEnum(CardRequestStatus)
-  status?: CardRequestStatus;
 }

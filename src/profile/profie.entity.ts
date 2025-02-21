@@ -1,5 +1,5 @@
 import { Branch } from "src/branch/branch.entity";
-import { Fee } from "src/common/types";
+import { CurrencyType, Fee } from "src/common/types";
 import { Scheme } from "src/scheme/scheme.entity";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
@@ -21,8 +21,8 @@ export class Profile {
   @Column({ type: 'text' })
   description: string;
 
-  @Column({ type: 'varchar', length: 3 })
-  currency: string;
+  @Column({ type: 'enum', enum: CurrencyType, nullable: true })
+  currency: CurrencyType;
 
   @Column({ type: 'jsonb', default: [] })
   fees: Fee[];
@@ -30,6 +30,7 @@ export class Profile {
   @ManyToOne(() => Scheme, (scheme) => scheme.profiles, {
     onDelete: 'CASCADE',
   })
+    
   @JoinColumn({ name: 'scheme_id' })
   scheme: Scheme;
 

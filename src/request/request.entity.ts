@@ -1,4 +1,4 @@
-import { CardRequestStatus, CurrencyType } from "src/common/types";
+import { CardRequestStatus, CardRequestStatusTrack, CurrencyType } from "src/common/types";
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
@@ -24,11 +24,19 @@ export class Request {
   @Column({ nullable: false, type: Number })
   batch: number;
 
-  @Column({ nullable: false, type: 'enum', enum:CurrencyType, default: 'NGN' })
+  @Column({ nullable: false, type: 'enum', enum: CurrencyType, default: 'NGN' })
   currency: CurrencyType;
-    
-  @Column({ nullable: false, type: 'enum', enum: CardRequestStatus })
+
+  @Column({
+    nullable: false,
+    type: 'enum',
+    enum: CardRequestStatus,
+    default: CardRequestStatus.PENDING,
+  })
   status: CardRequestStatus;
+
+  @Column({ nullable: false, type: 'enum', enum: CardRequestStatusTrack, default: CardRequestStatusTrack.UNTRACKED })
+  status_track: CardRequestStatusTrack;
 
   @CreateDateColumn({ type: 'timestamp', nullable: true })
   created_at: Date | null;

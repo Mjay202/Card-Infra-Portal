@@ -19,9 +19,9 @@ export class RequestController {
         return this.requestService.findOne(id);
     }
 
-    @Patch('id')
-    async updateStatus(@Body('status') status: CardRequestStatus, @Param('id') id: string) {
-        return this.requestService.changeStatus(id, status);
+    @Patch('process/:id')
+    async updateStatus( @Param('id') id: string) {
+        return this.requestService.process(id);
     }
 
     @Post()
