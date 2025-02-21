@@ -39,7 +39,22 @@ export enum CardRequestStatus {
 
 export enum CardRequestStatusTrack {
   UNTRACKED = 'Untracked',
-    DOWNLOADED = 'Downloaded',
+  DOWNLOADED = 'Downloaded',
   AWAITING_DISPATCH = 'Awaiting Dispatch',
   DISPATCHED = 'Dispatched',
 }
+export type UserRecord = {
+  id: string;
+  email: string;
+  username: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+};
+
+export type UserLoginCredentials = {
+    id: string;
+    name: string;
+    email: string
+    username: string;
+    password: string;
+};

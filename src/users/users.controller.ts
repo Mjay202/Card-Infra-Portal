@@ -40,15 +40,6 @@ export class UsersController {
     return this.userService.findById(id);
   }
 
-  @Get('by-slug/:slug')
-  async findBySlug(@Param('slug') slug: string) {
-    return this.userService.findBySlug(slug);
-  }
-
-  @Get('by-email/:email')
-  async findByEmail(@Param('email') email: string) {
-    return this.userService.findByEmail(email);
-  }
 
   @Post()
   @UseGuards(JwtAuthGuard)
@@ -61,35 +52,6 @@ export class UsersController {
     return this.userService.create(userData);
   }
 
-  @Patch(':id')
-  @UseGuards(JwtAuthGuard)
-  async updateUserById(
-    @Request() req,
-    @Body() userData: UpdateUserDto,
-    @Param('id') id: string,
-  ) {
-    if (req.user.user_type !== 'Admin') {
-      throw new ForbiddenException(
-        'Only Admin is allowed to update user record',
-      );
-    }
-    return this.userService.updateById(id, userData);
-  }
-
-  @Patch('by-slug/:slug')
-  @UseGuards(JwtAuthGuard)
-  async updateUserBySlug(
-    @Request() req,
-    @Body() userData: UpdateUserDto,
-    @Param('slug') slug: string,
-  ) {
-    if (req.user.user_type !== 'Admin') {
-      throw new ForbiddenException(
-        'Only Admin is allowed to update user record',
-      );
-    }
-    return this.userService.updateBySlug(slug, userData);
-  }
 
   @Delete(':id')
   @UseGuards(JwtAuthGuard)
@@ -102,14 +64,5 @@ export class UsersController {
     return this.userService.removeById(id);
   }
 
-  @Delete('by-slug/:slug')
-  @UseGuards(JwtAuthGuard)
-  async deleteBySlug(@Param('slug') slug: string, @Request() req) {
-    if (req.user.user_type !== 'Admin') {
-      throw new ForbiddenException(
-        'Only Admin is allowed to delete user record',
-      );
-    }
-    return this.userService.removeBySlug(slug);
-  }
+
 }
