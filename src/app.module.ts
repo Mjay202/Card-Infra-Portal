@@ -8,6 +8,8 @@ import { SchemeModule } from './scheme/scheme.module';
 import { BranchModule } from './branch/branch.module';
 import { RequestModule } from './request/request.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -23,6 +25,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
     BranchModule,
     RequestModule,
     DashboardModule,
+    // AuthModule,
+    // UsersModule
   ],
   controllers: [AppController],
   providers: [AppService],
