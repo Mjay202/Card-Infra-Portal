@@ -14,7 +14,10 @@ export class SchemeService {
     const newScheme = await this.schemeRepo.create(dto);
     return this.schemeRepo.save(newScheme);
   }
-
+  async findAll() {
+  return this.schemeRepo.find()
+  }
+  
   async updateScheme(id: string, updateData: UpdateSchemeDto): Promise<Scheme> {
     // Find the existing scheme
     const scheme = await this.schemeRepo.findOne({ where: { id } });

@@ -15,6 +15,10 @@ export class BranchService {
         return this.branchRepo.save(newBranch);
     }
 
+    async findAll() {
+        return this.branchRepo.find()
+    }
+
     async delete(id: string) {
         return this.branchRepo.delete({id})
     }
