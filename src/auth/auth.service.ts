@@ -65,7 +65,7 @@ export class AuthService {
       email: user.email,
       name: user.name,
     };
-    
+
     return {
       id: user.id,
       name: user.name,

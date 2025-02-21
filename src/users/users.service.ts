@@ -86,6 +86,7 @@ export class UsersService {
       name: user.name,
       email: user.name,
       username: user.username,
+      last_login: new Date,
       password: user.password,
     };
   }

@@ -54,7 +54,8 @@ export type UserRecord = {
 export type UserLoginCredentials = {
     id: string;
     name: string;
-    email: string
+    email: string,
+    last_login: Date,
     username: string;
     password: string;
 };
