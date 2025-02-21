@@ -14,6 +14,7 @@ export class SchemeService {
     const newScheme = await this.schemeRepo.create(dto);
     return this.schemeRepo.save(newScheme);
   }
+  
   async findAll() {
   return this.schemeRepo.find()
   }
