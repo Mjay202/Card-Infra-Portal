@@ -19,7 +19,7 @@ export class SchemeService {
   return this.schemeRepo.find()
   }
   
-  async updateScheme(id: string, updateData: UpdateSchemeDto): Promise<Scheme> {
+  async update(id: string, updateData: UpdateSchemeDto): Promise<Scheme> {
     // Find the existing scheme
     const scheme = await this.schemeRepo.findOne({ where: { id } });
     if (!scheme) throw new NotFoundException('Scheme not found');
