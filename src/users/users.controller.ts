@@ -21,11 +21,6 @@ export class UsersController {
   @Get()
   @UseGuards(JwtAuthGuard)
   async find(@Request() req) {
-    if (req.user.user_type !== 'Admin' && req.user.user_type !== 'Teacher') {
-      throw new ForbiddenException(
-        'Only Admins or Teachers are allowed to get all user record',
-      );
-    }
     return this.userService.findAll();
   }
 
@@ -44,11 +39,6 @@ export class UsersController {
   @Post()
   @UseGuards(JwtAuthGuard)
   async create(@Request() req, @Body() userData: CreateUserDto) {
-    if (req.user.user_type !== 'Admin') {
-      throw new ForbiddenException(
-        'Only Admin is allowed to create user record',
-      );
-    }
     return this.userService.create(userData);
   }
 
@@ -56,11 +46,6 @@ export class UsersController {
   @Delete(':id')
   @UseGuards(JwtAuthGuard)
   async deleteById(@Param('id') id: string, @Request() req) {
-    if (req.user.user_type !== 'Admin') {
-      throw new ForbiddenException(
-        'Only Admin is allowed to delete user record',
-      );
-    }
     return this.userService.removeById(id);
   }
 

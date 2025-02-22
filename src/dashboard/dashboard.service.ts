@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CardRequestStatus } from 'src/common/types';
+import { CardRequestStatus, UserLoginCredentials } from 'src/common/types';
 import { Request } from 'src/request/request.entity';
 import { Repository } from 'typeorm';
 
@@ -10,7 +10,7 @@ export class DashboardService {
         @InjectRepository(Request) private readonly requestRepo: Repository<Request>
     ){}
 
-    async dashboard() {
+    async dashboard(user: UserLoginCredentials) {
         // Get Recent Requests from repo
         const latest_requests = await this.requestRepo.find({
           order: { created_at: 'DESC' }, // Sorted in descending order (latest first)
@@ -22,9 +22,8 @@ export class DashboardService {
         
         
         return {
-          name: 'Nazeer',
+            user_profile: user,
           last_login: new Date(),
-
           //   This should calculated from cards modules
           // But for now we return dummy values to simulate the real-time calculations
           total_active_cards: {

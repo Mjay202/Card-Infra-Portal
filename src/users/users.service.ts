@@ -84,7 +84,7 @@ export class UsersService {
     return {
       id: user.id,
       name: user.name,
-      email: user.name,
+      email: user.email,
       username: user.username,
       last_login: new Date,
       password: user.password,
