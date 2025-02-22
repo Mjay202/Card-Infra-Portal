@@ -35,5 +35,7 @@ export class ProfileService {
         return await this.profileRepo.find()
     }
 
-    
+    async findOne(id: string) {
+        return await this.profileRepo.findOne({where:{id}})
+    }
 }
