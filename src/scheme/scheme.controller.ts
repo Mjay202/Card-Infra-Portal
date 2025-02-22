@@ -1,8 +1,10 @@
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { SchemeService } from './scheme.service';
 import { CreateSchemeDto, UpdateSchemeDto } from './scheme.dto';
+import { JwtAuthGuard } from 'src/common/guards/jwt-auth.guard';
 
 @Controller('scheme')
+@UseGuards(JwtAuthGuard)
 export class SchemeController {
     constructor (
         private readonly schemeService: SchemeService

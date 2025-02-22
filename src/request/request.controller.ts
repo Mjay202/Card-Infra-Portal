@@ -1,9 +1,11 @@
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { RequestService } from './request.service';
 import { CardRequestStatus } from 'src/common/types';
 import { CreateRequestDto } from './request.dto';
+import { JwtAuthGuard } from 'src/common/guards/jwt-auth.guard';
 
 @Controller('request')
+@UseGuards(JwtAuthGuard)
 export class RequestController {
     constructor(
         private readonly requestService: RequestService
